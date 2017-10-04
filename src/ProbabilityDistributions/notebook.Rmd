@@ -1,0 +1,52 @@
+---
+title: "Introduction to Statistical Thought"
+output: html_notebook
+---
+
+# Probability Distributions
+
+```{r}
+med.1000 <- read.table('ocean_temps', header = TRUE)
+
+good <- abs ( med.1000$lon + 20 ) < 1 &
+        abs ( med.1000$lat - 45 ) < 1
+
+m <- mean ( med.1000$temp[good] )
+s <- sqrt ( var ( med.1000$temp[good] ) )
+
+par ( mfrow=c(2,1) )
+
+hist ( med.1000$temp[good], xlab="temperature", ylab="",
+main="", prob=T, xlim=c(5,11) )
+
+lines ( density(med.1000$temp[good]) )
+```
+
+```{r}
+hist ( discoveries, xlab="discoveries", ylab="", main="",
+prob=T, breaks=seq(-.5,12.5,by=1) )
+lines ( 0:12, dpois(0:12, 3.1), type="b" )
+```
+
+# The Rest
+
+* Uniform distribution.
+* The Binomial Distribution
+* The Poisson Distribution
+* The Exponential Distribution
+* The Normal Distribution
+* CENTERS, SPREADS, MEANS, AND MOMENTS
+* Association, Dependence, Independence
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
