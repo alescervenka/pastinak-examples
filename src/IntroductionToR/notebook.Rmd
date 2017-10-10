@@ -1,6 +1,9 @@
 ---
 title: "Introduction to R"
-output: html_notebook
+output: 
+  html_notebook:
+    toc: true
+    toc_depth: 1
 ---
 
 # Simple manipulations; numbers and vectors
@@ -70,3 +73,144 @@ y
 ```
 
 # Objects, their modes and attributes
+
+```{r}
+digits <- 0:9
+digits
+
+characters <- as.character(digits)
+characters
+
+digits2 <- as.integer(characters)
+digits2
+
+length(digits2) <- 17
+digits2
+```
+
+## Getting and setting attributes
+```{r}
+attributes(digits2)
+attr(digits2, "a") <- c(1,2,3)
+digits2
+```
+
+## The class of an object
+
+```{r}
+class(characters)
+class(digits)
+```
+
+# Ordered and unordered factors
+
+A _factor_ is a vector object used to specify a discrete classification (grouping) of the components of other vectors of the same length.
+
+Suppose, for example, we have a sample of 30 tax accountants from all the states and territories of Australia14 and their individual state of origin is specified by a character vector of state mnemonics as
+
+```{r}
+state <- c("tas", "sa",  "qld", "nsw", "nsw", "nt",  "wa",  "wa",
+             "qld", "vic", "nsw", "vic", "qld", "qld", "sa",  "tas",
+             "sa",  "nt",  "wa",  "vic", "qld", "nsw", "nsw", "wa",
+             "sa",  "act", "nsw", "vic", "vic", "act")
+
+statef <- factor(state)
+statef
+levels(statef)
+```
+
+## The function tapply() and ragged arrays
+
+To continue the previous example, suppose we have the incomes of the same tax accountants in another vector (in suitably large units of money) 
+
+```{r}
+incomes <- c(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56,
+               61, 61, 61, 58, 51, 48, 65, 49, 49, 41, 48, 52, 46,
+               59, 46, 58, 43)
+```
+
+To calculate the sample mean income for each state we can now use the special function tapply(): 
+
+```{r}
+incmeans <- tapply(incomes, statef, mean)
+incmeans
+```
+```{r}
+stdError <- function(x) sqrt(var(x)/length(x))
+incster <- tapply(incomes, statef, stdError)
+incster
+```
+
+The combination of a vector and a labelling factor is an example of what is sometimes called a _ragged array_, since the subclass sizes are possibly irregular.
+
+## Ordered factors
+
+The levels of factors are stored in alphabetical order, or in the order they were specified to factor if they were specified explicitly.
+
+Sometimes the levels will have a natural ordering that we want to record and want our statistical analysis to make use of. The _ordered()_ function creates such ordered factors but is otherwise identical to _factor_. For most purposes the only difference between ordered and unordered factors is that the former are printed showing the ordering of the levels, but the contrasts generated for them in fitting linear models are different. 
+
+# Arrays and matrices
+
+```{r}
+x <- array(1:20, dim=c(4,5))   # Generate a 4 by 5 array.
+x
+```
+## Index matrices
+
+```{r}
+indexMatrix <- array(c(1:3, 3:1), dim=c(3,2))
+indexMatrix
+
+x[indexMatrix]
+x[indexMatrix] <- 0
+x
+```
+
+## The array() function
+
+```{r}
+Z <- array(0, c(3,4))
+Z
+```
+
+## Frequency tables from factors
+
+```{r}
+statefr <- table(statef)
+statefr
+```
+
+This gives in statefr a table of frequencies of each state in the sample.
+
+Further suppose that incomef is a factor giving a suitably defined “income class” for each entry in the data vector, for example with the cut() function: 
+
+```{r}
+incomef <- factor(cut(incomes, breaks = 35+10*(0:7)))
+incomef
+```
+
+Then to calculate a two-way table of frequencies: 
+```{r}
+table(incomef,statef)
+```
+
+
+# Lists and data frames
+
+# Reading data from files
+
+# Probability distributions
+
+# Grouping, loops and conditional execution
+
+# Writing your own functions
+
+# Statistical models in R
+
+# Graphical procedures
+
+# Packages
+
+# OS facilities
+
+

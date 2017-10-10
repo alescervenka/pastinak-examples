@@ -170,6 +170,23 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#simple-manipulations-numbers-and-vectors">Simple manipulations; numbers and vectors</a></li>
+<li><a href="#objects-their-modes-and-attributes">Objects, their modes and attributes</a></li>
+<li><a href="#ordered-and-unordered-factors">Ordered and unordered factors</a></li>
+<li><a href="#arrays-and-matrices">Arrays and matrices</a></li>
+<li><a href="#lists-and-data-frames">Lists and data frames</a></li>
+<li><a href="#reading-data-from-files">Reading data from files</a></li>
+<li><a href="#probability-distributions">Probability distributions</a></li>
+<li><a href="#grouping-loops-and-conditional-execution">Grouping, loops and conditional execution</a></li>
+<li><a href="#writing-your-own-functions">Writing your own functions</a></li>
+<li><a href="#statistical-models-in-r">Statistical models in R</a></li>
+<li><a href="#graphical-procedures">Graphical procedures</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#os-facilities">OS facilities</a></li>
+</ul>
+</div>
 
 <!-- rnb-text-begin -->
 <div id="simple-manipulations-numbers-and-vectors" class="section level1">
@@ -181,15 +198,6 @@ $(document).ready(function () {
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBzZXEoLTUsIDUsIGJ5PS4yKVxueFxuYGBgIn0= -->
 <pre class="r"><code>x &lt;- seq(-5, 5, by=.2)
 x</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAtNS4wIC00LjggLTQuNiAtNC40IC00LjIgLTQuMCAtMy44IC0zLjYgLTMuNCAtMy4yIC0zLjAgLTIuOCAtMi42IC0yLjQgLTIuMiAtMi4wXG5bMTddIC0xLjggLTEuNiAtMS40IC0xLjIgLTEuMCAtMC44IC0wLjYgLTAuNCAtMC4yICAwLjAgIDAuMiAgMC40ICAwLjYgIDAuOCAgMS4wICAxLjJcblszM10gIDEuNCAgMS42ICAxLjggIDIuMCAgMi4yICAyLjQgIDIuNiAgMi44ICAzLjAgIDMuMiAgMy40ICAzLjYgIDMuOCAgNC4wICA0LjIgIDQuNFxuWzQ5XSAgNC42ICA0LjggIDUuMFxuIn0= -->
-<pre><code> [1] -5.0 -4.8 -4.6 -4.4 -4.2 -4.0 -3.8 -3.6 -3.4 -3.2 -3.0 -2.8 -2.6 -2.4 -2.2 -2.0
-[17] -1.8 -1.6 -1.4 -1.2 -1.0 -0.8 -0.6 -0.4 -0.2  0.0  0.2  0.4  0.6  0.8  1.0  1.2
-[33]  1.4  1.6  1.8  2.0  2.2  2.4  2.6  2.8  3.0  3.2  3.4  3.6  3.8  4.0  4.2  4.4
-[49]  4.6  4.8  5.0</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP3NlcVxuYGBgIn0= -->
-<pre class="r"><code>?seq</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -241,9 +249,6 @@ ind</code></pre>
 <pre class="r"><code>labs &lt;- paste(c(&quot;X&quot;,&quot;Y&quot;), 1:10, sep=&quot;&quot;)
 labs</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIlgxXCIgIFwiWTJcIiAgXCJYM1wiICBcIlk0XCIgIFwiWDVcIiAgXCJZNlwiICBcIlg3XCIgIFwiWThcIiAgXCJYOVwiICBcIlkxMFwiXG4ifQ== -->
-<pre><code> [1] &quot;X1&quot;  &quot;Y2&quot;  &quot;X3&quot;  &quot;Y4&quot;  &quot;X5&quot;  &quot;Y6&quot;  &quot;X7&quot;  &quot;Y8&quot;  &quot;X9&quot;  &quot;Y10&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -283,9 +288,295 @@ y</code></pre>
 <div id="objects-their-modes-and-attributes" class="section level1">
 <h1>Objects, their modes and attributes</h1>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGlnaXRzIDwtIDA6OVxuZGlnaXRzXG5gYGAifQ== -->
+<pre class="r"><code>digits &lt;- 0:9
+digits</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwIDEgMiAzIDQgNSA2IDcgOCA5XG4ifQ== -->
+<pre><code> [1] 0 1 2 3 4 5 6 7 8 9</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhcmFjdGVycyA8LSBhcy5jaGFyYWN0ZXIoZGlnaXRzKVxuY2hhcmFjdGVyc1xuYGBgIn0= -->
+<pre class="r"><code>characters &lt;- as.character(digits)
+characters</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIjBcIiBcIjFcIiBcIjJcIiBcIjNcIiBcIjRcIiBcIjVcIiBcIjZcIiBcIjdcIiBcIjhcIiBcIjlcIlxuIn0= -->
+<pre><code> [1] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot; &quot;8&quot; &quot;9&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGlnaXRzMiA8LSBhcy5pbnRlZ2VyKGNoYXJhY3RlcnMpXG5kaWdpdHMyXG5gYGAifQ== -->
+<pre class="r"><code>digits2 &lt;- as.integer(characters)
+digits2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwIDEgMiAzIDQgNSA2IDcgOCA5XG4ifQ== -->
+<pre><code> [1] 0 1 2 3 4 5 6 7 8 9</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGVuZ3RoKGRpZ2l0czIpIDwtIDE3XG5kaWdpdHMyXG5gYGAifQ== -->
+<pre class="r"><code>length(digits2) &lt;- 17
+digits2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgMCAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOCAgOSBOQSBOQSBOQSBOQSBOQSBOQSBOQVxuIn0= -->
+<pre><code> [1]  0  1  2  3  4  5  6  7  8  9 NA NA NA NA NA NA NA</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="getting-and-setting-attributes" class="section level2">
+<h2>Getting and setting attributes</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXR0cmlidXRlcyhkaWdpdHMyKVxuYGBgIn0= -->
+<pre class="r"><code>attributes(digits2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTlVMTFxuIn0= -->
+<pre><code>NULL</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXR0cihkaWdpdHMyLCBcImFcIikgPC0gYygxLDIsMylcbmRpZ2l0czJcbmBgYCJ9 -->
+<pre class="r"><code>attr(digits2, &quot;a&quot;) &lt;- c(1,2,3)
+digits2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgMCAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOCAgOSBOQSBOQSBOQSBOQSBOQSBOQSBOQVxuYXR0cigsXCJhXCIpXG5bMV0gMSAyIDNcbiJ9 -->
+<pre><code> [1]  0  1  2  3  4  5  6  7  8  9 NA NA NA NA NA NA NA
+attr(,&quot;a&quot;)
+[1] 1 2 3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="the-class-of-an-object" class="section level2">
+<h2>The class of an object</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoY2hhcmFjdGVycylcbmBgYCJ9 -->
+<pre class="r"><code>class(characters)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoZGlnaXRzKVxuYGBgIn0= -->
+<pre class="r"><code>class(digits)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiaW50ZWdlclwiXG4ifQ== -->
+<pre><code>[1] &quot;integer&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="ordered-and-unordered-factors" class="section level1">
+<h1>Ordered and unordered factors</h1>
+<p>A <em>factor</em> is a vector object used to specify a discrete classification (grouping) of the components of other vectors of the same length.</p>
+<p>Suppose, for example, we have a sample of 30 tax accountants from all the states and territories of Australia14 and their individual state of origin is specified by a character vector of state mnemonics as</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RhdGUgPC0gYyhcInRhc1wiLCBcInNhXCIsICBcInFsZFwiLCBcIm5zd1wiLCBcIm5zd1wiLCBcIm50XCIsICBcIndhXCIsICBcIndhXCIsXG4gICAgICAgICAgICAgXCJxbGRcIiwgXCJ2aWNcIiwgXCJuc3dcIiwgXCJ2aWNcIiwgXCJxbGRcIiwgXCJxbGRcIiwgXCJzYVwiLCAgXCJ0YXNcIixcbiAgICAgICAgICAgICBcInNhXCIsICBcIm50XCIsICBcIndhXCIsICBcInZpY1wiLCBcInFsZFwiLCBcIm5zd1wiLCBcIm5zd1wiLCBcIndhXCIsXG4gICAgICAgICAgICAgXCJzYVwiLCAgXCJhY3RcIiwgXCJuc3dcIiwgXCJ2aWNcIiwgXCJ2aWNcIiwgXCJhY3RcIilcbnN0YXRlZiA8LSBmYWN0b3Ioc3RhdGUpXG5zdGF0ZWZcbmBgYCJ9 -->
+<pre class="r"><code>state &lt;- c(&quot;tas&quot;, &quot;sa&quot;,  &quot;qld&quot;, &quot;nsw&quot;, &quot;nsw&quot;, &quot;nt&quot;,  &quot;wa&quot;,  &quot;wa&quot;,
+             &quot;qld&quot;, &quot;vic&quot;, &quot;nsw&quot;, &quot;vic&quot;, &quot;qld&quot;, &quot;qld&quot;, &quot;sa&quot;,  &quot;tas&quot;,
+             &quot;sa&quot;,  &quot;nt&quot;,  &quot;wa&quot;,  &quot;vic&quot;, &quot;qld&quot;, &quot;nsw&quot;, &quot;nsw&quot;, &quot;wa&quot;,
+             &quot;sa&quot;,  &quot;act&quot;, &quot;nsw&quot;, &quot;vic&quot;, &quot;vic&quot;, &quot;act&quot;)
+statef &lt;- factor(state)
+statef</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSB0YXMgc2EgIHFsZCBuc3cgbnN3IG50ICB3YSAgd2EgIHFsZCB2aWMgbnN3IHZpYyBxbGQgcWxkIHNhICB0YXMgc2EgIG50ICB3YSAgdmljIHFsZCBuc3cgbnN3IHdhICBzYSAgYWN0IG5zdyB2aWMgdmljIGFjdFxuTGV2ZWxzOiBhY3QgbnN3IG50IHFsZCBzYSB0YXMgdmljIHdhXG4ifQ== -->
+<pre><code> [1] tas sa  qld nsw nsw nt  wa  wa  qld vic nsw vic qld qld sa  tas sa  nt  wa  vic qld nsw nsw wa  sa  act nsw vic vic act
+Levels: act nsw nt qld sa tas vic wa</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGV2ZWxzKHN0YXRlZilcbmBgYCJ9 -->
+<pre class="r"><code>levels(statef)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYWN0XCIgXCJuc3dcIiBcIm50XCIgIFwicWxkXCIgXCJzYVwiICBcInRhc1wiIFwidmljXCIgXCJ3YVwiIFxuIn0= -->
+<pre><code>[1] &quot;act&quot; &quot;nsw&quot; &quot;nt&quot;  &quot;qld&quot; &quot;sa&quot;  &quot;tas&quot; &quot;vic&quot; &quot;wa&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="the-function-tapply-and-ragged-arrays" class="section level2">
+<h2>The function tapply() and ragged arrays</h2>
+<p>To continue the previous example, suppose we have the incomes of the same tax accountants in another vector (in suitably large units of money)</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5jb21lcyA8LSBjKDYwLCA0OSwgNDAsIDYxLCA2NCwgNjAsIDU5LCA1NCwgNjIsIDY5LCA3MCwgNDIsIDU2LFxuICAgICAgICAgICAgICAgNjEsIDYxLCA2MSwgNTgsIDUxLCA0OCwgNjUsIDQ5LCA0OSwgNDEsIDQ4LCA1MiwgNDYsXG4gICAgICAgICAgICAgICA1OSwgNDYsIDU4LCA0MylcbmBgYCJ9 -->
+<pre class="r"><code>incomes &lt;- c(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56,
+               61, 61, 61, 58, 51, 48, 65, 49, 49, 41, 48, 52, 46,
+               59, 46, 58, 43)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>To calculate the sample mean income for each state we can now use the special function tapply():</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5jbWVhbnMgPC0gdGFwcGx5KGluY29tZXMsIHN0YXRlZiwgbWVhbilcbmluY21lYW5zXG5gYGAifQ== -->
+<pre class="r"><code>incmeans &lt;- tapply(incomes, statef, mean)
+incmeans</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBhY3QgICAgICBuc3cgICAgICAgbnQgICAgICBxbGQgICAgICAgc2EgICAgICB0YXMgICAgICB2aWMgICAgICAgd2EgXG40NC41MDAwMCA1Ny4zMzMzMyA1NS41MDAwMCA1My42MDAwMCA1NS4wMDAwMCA2MC41MDAwMCA1Ni4wMDAwMCA1Mi4yNTAwMCBcbiJ9 -->
+<pre><code>     act      nsw       nt      qld       sa      tas      vic       wa 
+44.50000 57.33333 55.50000 53.60000 55.00000 60.50000 56.00000 52.25000 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RkRXJyb3IgPC0gZnVuY3Rpb24oeCkgc3FydCh2YXIoeCkvbGVuZ3RoKHgpKVxuaW5jc3RlciA8LSB0YXBwbHkoaW5jb21lcywgc3RhdGVmLCBzdGRFcnJvcilcbmluY3N0ZXJcbmBgYCJ9 -->
+<pre class="r"><code>stdError &lt;- function(x) sqrt(var(x)/length(x))
+incster &lt;- tapply(incomes, statef, stdError)
+incster</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBhY3QgICAgICBuc3cgICAgICAgbnQgICAgICBxbGQgICAgICAgc2EgICAgICB0YXMgICAgICB2aWMgICAgICAgd2EgXG4xLjUwMDAwMCA0LjMxMDE5NSA0LjUwMDAwMCA0LjEwNjA5MyAyLjczODYxMyAwLjUwMDAwMCA1LjI0NDA0NCAyLjY1NzUzNiBcbiJ9 -->
+<pre><code>     act      nsw       nt      qld       sa      tas      vic       wa 
+1.500000 4.310195 4.500000 4.106093 2.738613 0.500000 5.244044 2.657536 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The combination of a vector and a labelling factor is an example of what is sometimes called a <em>ragged array</em>, since the subclass sizes are possibly irregular.</p>
+</div>
+<div id="ordered-factors" class="section level2">
+<h2>Ordered factors</h2>
+<p>The levels of factors are stored in alphabetical order, or in the order they were specified to factor if they were specified explicitly.</p>
+<p>Sometimes the levels will have a natural ordering that we want to record and want our statistical analysis to make use of. The <em>ordered()</em> function creates such ordered factors but is otherwise identical to <em>factor</em>. For most purposes the only difference between ordered and unordered factors is that the former are printed showing the ordering of the levels, but the contrasts generated for them in fitting linear models are different.</p>
+</div>
+</div>
+<div id="arrays-and-matrices" class="section level1">
+<h1>Arrays and matrices</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBhcnJheSgxOjIwLCBkaW09Yyg0LDUpKSAgICMgR2VuZXJhdGUgYSA0IGJ5IDUgYXJyYXkuXG54XG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- array(1:20, dim=c(4,5))   # Generate a 4 by 5 array.
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gICAgMSAgICA1ICAgIDkgICAxMyAgIDE3XG5bMixdICAgIDIgICAgNiAgIDEwICAgMTQgICAxOFxuWzMsXSAgICAzICAgIDcgICAxMSAgIDE1ICAgMTlcbls0LF0gICAgNCAgICA4ICAgMTIgICAxNiAgIDIwXG4ifQ== -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    5    9   13   17
+[2,]    2    6   10   14   18
+[3,]    3    7   11   15   19
+[4,]    4    8   12   16   20</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="index-matrices" class="section level2">
+<h2>Index matrices</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5kZXhNYXRyaXggPC0gYXJyYXkoYygxOjMsIDM6MSksIGRpbT1jKDMsMikpXG5pbmRleE1hdHJpeFxuYGBgIn0= -->
+<pre class="r"><code>indexMatrix &lt;- array(c(1:3, 3:1), dim=c(3,2))
+indexMatrix</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgMlxuWzMsXSAgICAzICAgIDFcbiJ9 -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    2
+[3,]    3    1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFtpbmRleE1hdHJpeF1cbmBgYCJ9 -->
+<pre class="r"><code>x[indexMatrix]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAgMCAwXG4ifQ== -->
+<pre><code>[1] 0 0 0</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFtpbmRleE1hdHJpeF0gPC0gMFxueFxuYGBgIn0= -->
+<pre class="r"><code>x[indexMatrix] &lt;- 0
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gICAgMSAgICA1ICAgIDAgICAxMyAgIDE3XG5bMixdICAgIDIgICAgMCAgIDEwICAgMTQgICAxOFxuWzMsXSAgICAwICAgIDcgICAxMSAgIDE1ICAgMTlcbls0LF0gICAgNCAgICA4ICAgMTIgICAxNiAgIDIwXG4ifQ== -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    5    0   13   17
+[2,]    2    0   10   14   18
+[3,]    0    7   11   15   19
+[4,]    4    8   12   16   20</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="the-array-function" class="section level2">
+<h2>The array() function</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuWiA8LSBhcnJheSgwLCBjKDMsNCkpXG5aXG5gYGAifQ== -->
+<pre class="r"><code>Z &lt;- array(0, c(3,4))
+Z</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdXG5bMSxdICAgIDAgICAgMCAgICAwICAgIDBcblsyLF0gICAgMCAgICAwICAgIDAgICAgMFxuWzMsXSAgICAwICAgIDAgICAgMCAgICAwXG4ifQ== -->
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    0    0    0    0
+[2,]    0    0    0    0
+[3,]    0    0    0    0</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="frequency-tables-from-factors" class="section level2">
+<h2>Frequency tables from factors</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RhdGVmciA8LSB0YWJsZShzdGF0ZWYpXG5zdGF0ZWZyXG5gYGAifQ== -->
+<pre class="r"><code>statefr &lt;- table(statef)
+statefr</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoic3RhdGVmXG5hY3QgbnN3ICBudCBxbGQgIHNhIHRhcyB2aWMgIHdhIFxuICAyICAgNiAgIDIgICA1ICAgNCAgIDIgICA1ICAgNCBcbiJ9 -->
+<pre><code>statef
+act nsw  nt qld  sa tas vic  wa 
+  2   6   2   5   4   2   5   4 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This gives in statefr a table of frequencies of each state in the sample.</p>
+<p>Further suppose that incomef is a factor giving a suitably defined “income class” for each entry in the data vector, for example with the cut() function:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5jb21lZiA8LSBmYWN0b3IoY3V0KGluY29tZXMsIGJyZWFrcyA9IDM1KzEwKigwOjcpKSkgLT4gaW5jb21lZlxuaW5jb21lZlxuYGBgIn0= -->
+<pre class="r"><code>incomef &lt;- factor(cut(incomes, breaks = 35+10*(0:7))) -&gt; incomef
+incomef</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAoNTUsNjVdICg0NSw1NV0gKDM1LDQ1XSAoNTUsNjVdICg1NSw2NV0gKDU1LDY1XSAoNTUsNjVdICg0NSw1NV0gKDU1LDY1XSAoNjUsNzVdICg2NSw3NV0gKDM1LDQ1XSAoNTUsNjVdICg1NSw2NV0gKDU1LDY1XVxuWzE2XSAoNTUsNjVdICg1NSw2NV0gKDQ1LDU1XSAoNDUsNTVdICg1NSw2NV0gKDQ1LDU1XSAoNDUsNTVdICgzNSw0NV0gKDQ1LDU1XSAoNDUsNTVdICg0NSw1NV0gKDU1LDY1XSAoNDUsNTVdICg1NSw2NV0gKDM1LDQ1XVxuTGV2ZWxzOiAoMzUsNDVdICg0NSw1NV0gKDU1LDY1XSAoNjUsNzVdXG4ifQ== -->
+<pre><code> [1] (55,65] (45,55] (35,45] (55,65] (55,65] (55,65] (55,65] (45,55] (55,65] (65,75] (65,75] (35,45] (55,65] (55,65] (55,65]
+[16] (55,65] (55,65] (45,55] (45,55] (55,65] (45,55] (45,55] (35,45] (45,55] (45,55] (45,55] (55,65] (45,55] (55,65] (35,45]
+Levels: (35,45] (45,55] (55,65] (65,75]</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Then to calculate a two-way table of frequencies:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoaW5jb21lZixzdGF0ZWYpXG5gYGAifQ== -->
+<pre class="r"><code>table(incomef,statef)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgc3RhdGVmXG5pbmNvbWVmICAgYWN0IG5zdyBudCBxbGQgc2EgdGFzIHZpYyB3YVxuICAoMzUsNDVdICAgMSAgIDEgIDAgICAxICAwICAgMCAgIDEgIDBcbiAgKDQ1LDU1XSAgIDEgICAxICAxICAgMSAgMiAgIDAgICAxICAzXG4gICg1NSw2NV0gICAwICAgMyAgMSAgIDMgIDIgICAyICAgMiAgMVxuICAoNjUsNzVdICAgMCAgIDEgIDAgICAwICAwICAgMCAgIDEgIDBcbiJ9 -->
+<pre><code>         statef
+incomef   act nsw nt qld sa tas vic wa
+  (35,45]   1   1  0   1  0   0   1  0
+  (45,55]   1   1  1   1  2   0   1  3
+  (55,65]   0   3  1   3  2   2   2  1
+  (65,75]   0   1  0   0  0   0   1  0</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="lists-and-data-frames" class="section level1">
+<h1>Lists and data frames</h1>
+</div>
+<div id="reading-data-from-files" class="section level1">
+<h1>Reading data from files</h1>
+</div>
+<div id="probability-distributions" class="section level1">
+<h1>Probability distributions</h1>
+</div>
+<div id="grouping-loops-and-conditional-execution" class="section level1">
+<h1>Grouping, loops and conditional execution</h1>
+</div>
+<div id="writing-your-own-functions" class="section level1">
+<h1>Writing your own functions</h1>
+</div>
+<div id="statistical-models-in-r" class="section level1">
+<h1>Statistical models in R</h1>
+</div>
+<div id="graphical-procedures" class="section level1">
+<h1>Graphical procedures</h1>
+</div>
+<div id="packages" class="section level1">
+<h1>Packages</h1>
+</div>
+<div id="os-facilities" class="section level1">
+<h1>OS facilities</h1>
+<!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiSW50cm9kdWN0aW9uIHRvIFIiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCiMgU2ltcGxlIG1hbmlwdWxhdGlvbnM7IG51bWJlcnMgYW5kIHZlY3RvcnMKCiMjIEdlbmVyYXRpbmcgcmVndWxhciBzZXF1ZW5jZXMKCmBgYHtyfQp4IDwtIHNlcSgtNSwgNSwgYnk9LjIpCngKYGBgCgpgYGB7cn0KeDIgPC0gcmVwKDMsIHRpbWVzPTUpCngyCmBgYAoKIyMgTG9naWNhbCBWZWN0b3JzCgpgYGB7cn0KbnVtVmVjdG9yIDwtIHNlcShmcm9tPTEsIHRvPTIwKQpudW1WZWN0b3IKCmxhcmdlTnVtIDwtIG51bVZlY3RvciA+IDkKbGFyZ2VOdW0KCmxhcmdlTnVtcyA8LSBudW1WZWN0b3JbbGFyZ2VOdW1dCmxhcmdlTnVtcwpsYXJnZU51bXMyIDwtIG51bVZlY3RvcltudW1WZWN0b3IgPiA5XQpsYXJnZU51bXMyCmBgYAoKIyMgTWlzc2luZyBWYWx1ZXMKCmBgYHtyfQp6IDwtIGMoMTozLCBOQSkKaW5kIDwtIGlzLm5hKHopCmluZApgYGAKCiMjIENoYXJhY3RlciBWZWN0b3JzCgpgYGB7cn0KbGFicyA8LSBwYXN0ZShjKCJYIiwiWSIpLCAxOjEwLCBzZXA9IiIpCmxhYnMKYGBgCgojIyBJbmRleCBWZWN0b3JzCgpgYGB7cn0KYSA8LSBjKCJ4IiwieSIpW3JlcChjKDEsMiwyLDEpLCB0aW1lcz0zKV0KYQpiIDwtIHNlcShmcm9tPTEsIHRvPTEwKVstKDE6NSldCmIKYGBgCgpgYGB7cn0KZnJ1aXQgPC0gYyg1LCAxMCwgMSwgMjApCm5hbWVzKGZydWl0KSA8LSBjKCJvcmFuZ2UiLCAiYmFuYW5hIiwgImFwcGxlIiwgInBlYWNoIikKbHVuY2ggPC0gZnJ1aXRbYygiYXBwbGUiLCJvcmFuZ2UiKV0KbHVuY2gKYGBgCgpgYGB7cn0KeSA8LSBjKC0yLCAtMSwgMSwgMikKeVt5IDwgMF0gPC0gLXlbeSA8IDBdCnkKYGBgCgojIE9iamVjdHMsIHRoZWlyIG1vZGVzIGFuZCBhdHRyaWJ1dGVz</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiSW50cm9kdWN0aW9uIHRvIFIiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazoKICAgIHRvYzogdHJ1ZQogICAgdG9jX2RlcHRoOiAxCi0tLQoKIyBTaW1wbGUgbWFuaXB1bGF0aW9uczsgbnVtYmVycyBhbmQgdmVjdG9ycwoKIyMgR2VuZXJhdGluZyByZWd1bGFyIHNlcXVlbmNlcwoKYGBge3J9CnggPC0gc2VxKC01LCA1LCBieT0uMikKeApgYGAKCmBgYHtyfQp4MiA8LSByZXAoMywgdGltZXM9NSkKeDIKYGBgCgojIyBMb2dpY2FsIFZlY3RvcnMKCmBgYHtyfQpudW1WZWN0b3IgPC0gc2VxKGZyb209MSwgdG89MjApCm51bVZlY3RvcgoKbGFyZ2VOdW0gPC0gbnVtVmVjdG9yID4gOQpsYXJnZU51bQoKbGFyZ2VOdW1zIDwtIG51bVZlY3RvcltsYXJnZU51bV0KbGFyZ2VOdW1zCmxhcmdlTnVtczIgPC0gbnVtVmVjdG9yW251bVZlY3RvciA+IDldCmxhcmdlTnVtczIKYGBgCgojIyBNaXNzaW5nIFZhbHVlcwoKYGBge3J9CnogPC0gYygxOjMsIE5BKQppbmQgPC0gaXMubmEoeikKaW5kCmBgYAoKIyMgQ2hhcmFjdGVyIFZlY3RvcnMKCmBgYHtyfQpsYWJzIDwtIHBhc3RlKGMoIlgiLCJZIiksIDE6MTAsIHNlcD0iIikKbGFicwpgYGAKCiMjIEluZGV4IFZlY3RvcnMKCmBgYHtyfQphIDwtIGMoIngiLCJ5IilbcmVwKGMoMSwyLDIsMSksIHRpbWVzPTMpXQphCmIgPC0gc2VxKGZyb209MSwgdG89MTApWy0oMTo1KV0KYgpgYGAKCmBgYHtyfQpmcnVpdCA8LSBjKDUsIDEwLCAxLCAyMCkKbmFtZXMoZnJ1aXQpIDwtIGMoIm9yYW5nZSIsICJiYW5hbmEiLCAiYXBwbGUiLCAicGVhY2giKQpsdW5jaCA8LSBmcnVpdFtjKCJhcHBsZSIsIm9yYW5nZSIpXQpsdW5jaApgYGAKCmBgYHtyfQp5IDwtIGMoLTIsIC0xLCAxLCAyKQp5W3kgPCAwXSA8LSAteVt5IDwgMF0KeQpgYGAKCiMgT2JqZWN0cywgdGhlaXIgbW9kZXMgYW5kIGF0dHJpYnV0ZXMKCmBgYHtyfQpkaWdpdHMgPC0gMDo5CmRpZ2l0cwoKY2hhcmFjdGVycyA8LSBhcy5jaGFyYWN0ZXIoZGlnaXRzKQpjaGFyYWN0ZXJzCgpkaWdpdHMyIDwtIGFzLmludGVnZXIoY2hhcmFjdGVycykKZGlnaXRzMgoKbGVuZ3RoKGRpZ2l0czIpIDwtIDE3CmRpZ2l0czIKYGBgCgojIyBHZXR0aW5nIGFuZCBzZXR0aW5nIGF0dHJpYnV0ZXMKYGBge3J9CmF0dHJpYnV0ZXMoZGlnaXRzMikKYXR0cihkaWdpdHMyLCAiYSIpIDwtIGMoMSwyLDMpCmRpZ2l0czIKYGBgCgojIyBUaGUgY2xhc3Mgb2YgYW4gb2JqZWN0CgpgYGB7cn0KY2xhc3MoY2hhcmFjdGVycykKY2xhc3MoZGlnaXRzKQpgYGAKCiMgT3JkZXJlZCBhbmQgdW5vcmRlcmVkIGZhY3RvcnMKCkEgX2ZhY3Rvcl8gaXMgYSB2ZWN0b3Igb2JqZWN0IHVzZWQgdG8gc3BlY2lmeSBhIGRpc2NyZXRlIGNsYXNzaWZpY2F0aW9uIChncm91cGluZykgb2YgdGhlIGNvbXBvbmVudHMgb2Ygb3RoZXIgdmVjdG9ycyBvZiB0aGUgc2FtZSBsZW5ndGguCgpTdXBwb3NlLCBmb3IgZXhhbXBsZSwgd2UgaGF2ZSBhIHNhbXBsZSBvZiAzMCB0YXggYWNjb3VudGFudHMgZnJvbSBhbGwgdGhlIHN0YXRlcyBhbmQgdGVycml0b3JpZXMgb2YgQXVzdHJhbGlhMTQgYW5kIHRoZWlyIGluZGl2aWR1YWwgc3RhdGUgb2Ygb3JpZ2luIGlzIHNwZWNpZmllZCBieSBhIGNoYXJhY3RlciB2ZWN0b3Igb2Ygc3RhdGUgbW5lbW9uaWNzIGFzCgpgYGB7cn0Kc3RhdGUgPC0gYygidGFzIiwgInNhIiwgICJxbGQiLCAibnN3IiwgIm5zdyIsICJudCIsICAid2EiLCAgIndhIiwKICAgICAgICAgICAgICJxbGQiLCAidmljIiwgIm5zdyIsICJ2aWMiLCAicWxkIiwgInFsZCIsICJzYSIsICAidGFzIiwKICAgICAgICAgICAgICJzYSIsICAibnQiLCAgIndhIiwgICJ2aWMiLCAicWxkIiwgIm5zdyIsICJuc3ciLCAid2EiLAogICAgICAgICAgICAgInNhIiwgICJhY3QiLCAibnN3IiwgInZpYyIsICJ2aWMiLCAiYWN0IikKCnN0YXRlZiA8LSBmYWN0b3Ioc3RhdGUpCnN0YXRlZgpsZXZlbHMoc3RhdGVmKQpgYGAKCiMjIFRoZSBmdW5jdGlvbiB0YXBwbHkoKSBhbmQgcmFnZ2VkIGFycmF5cwoKVG8gY29udGludWUgdGhlIHByZXZpb3VzIGV4YW1wbGUsIHN1cHBvc2Ugd2UgaGF2ZSB0aGUgaW5jb21lcyBvZiB0aGUgc2FtZSB0YXggYWNjb3VudGFudHMgaW4gYW5vdGhlciB2ZWN0b3IgKGluIHN1aXRhYmx5IGxhcmdlIHVuaXRzIG9mIG1vbmV5KSAKCmBgYHtyfQppbmNvbWVzIDwtIGMoNjAsIDQ5LCA0MCwgNjEsIDY0LCA2MCwgNTksIDU0LCA2MiwgNjksIDcwLCA0MiwgNTYsCiAgICAgICAgICAgICAgIDYxLCA2MSwgNjEsIDU4LCA1MSwgNDgsIDY1LCA0OSwgNDksIDQxLCA0OCwgNTIsIDQ2LAogICAgICAgICAgICAgICA1OSwgNDYsIDU4LCA0MykKYGBgCgpUbyBjYWxjdWxhdGUgdGhlIHNhbXBsZSBtZWFuIGluY29tZSBmb3IgZWFjaCBzdGF0ZSB3ZSBjYW4gbm93IHVzZSB0aGUgc3BlY2lhbCBmdW5jdGlvbiB0YXBwbHkoKTogCgpgYGB7cn0KaW5jbWVhbnMgPC0gdGFwcGx5KGluY29tZXMsIHN0YXRlZiwgbWVhbikKaW5jbWVhbnMKYGBgCmBgYHtyfQpzdGRFcnJvciA8LSBmdW5jdGlvbih4KSBzcXJ0KHZhcih4KS9sZW5ndGgoeCkpCmluY3N0ZXIgPC0gdGFwcGx5KGluY29tZXMsIHN0YXRlZiwgc3RkRXJyb3IpCmluY3N0ZXIKYGBgCgpUaGUgY29tYmluYXRpb24gb2YgYSB2ZWN0b3IgYW5kIGEgbGFiZWxsaW5nIGZhY3RvciBpcyBhbiBleGFtcGxlIG9mIHdoYXQgaXMgc29tZXRpbWVzIGNhbGxlZCBhIF9yYWdnZWQgYXJyYXlfLCBzaW5jZSB0aGUgc3ViY2xhc3Mgc2l6ZXMgYXJlIHBvc3NpYmx5IGlycmVndWxhci4KCiMjIE9yZGVyZWQgZmFjdG9ycwoKVGhlIGxldmVscyBvZiBmYWN0b3JzIGFyZSBzdG9yZWQgaW4gYWxwaGFiZXRpY2FsIG9yZGVyLCBvciBpbiB0aGUgb3JkZXIgdGhleSB3ZXJlIHNwZWNpZmllZCB0byBmYWN0b3IgaWYgdGhleSB3ZXJlIHNwZWNpZmllZCBleHBsaWNpdGx5LgoKU29tZXRpbWVzIHRoZSBsZXZlbHMgd2lsbCBoYXZlIGEgbmF0dXJhbCBvcmRlcmluZyB0aGF0IHdlIHdhbnQgdG8gcmVjb3JkIGFuZCB3YW50IG91ciBzdGF0aXN0aWNhbCBhbmFseXNpcyB0byBtYWtlIHVzZSBvZi4gVGhlIF9vcmRlcmVkKClfIGZ1bmN0aW9uIGNyZWF0ZXMgc3VjaCBvcmRlcmVkIGZhY3RvcnMgYnV0IGlzIG90aGVyd2lzZSBpZGVudGljYWwgdG8gX2ZhY3Rvcl8uIEZvciBtb3N0IHB1cnBvc2VzIHRoZSBvbmx5IGRpZmZlcmVuY2UgYmV0d2VlbiBvcmRlcmVkIGFuZCB1bm9yZGVyZWQgZmFjdG9ycyBpcyB0aGF0IHRoZSBmb3JtZXIgYXJlIHByaW50ZWQgc2hvd2luZyB0aGUgb3JkZXJpbmcgb2YgdGhlIGxldmVscywgYnV0IHRoZSBjb250cmFzdHMgZ2VuZXJhdGVkIGZvciB0aGVtIGluIGZpdHRpbmcgbGluZWFyIG1vZGVscyBhcmUgZGlmZmVyZW50LiAKCiMgQXJyYXlzIGFuZCBtYXRyaWNlcwoKYGBge3J9CnggPC0gYXJyYXkoMToyMCwgZGltPWMoNCw1KSkgICAjIEdlbmVyYXRlIGEgNCBieSA1IGFycmF5Lgp4CmBgYAojIyBJbmRleCBtYXRyaWNlcwoKYGBge3J9CmluZGV4TWF0cml4IDwtIGFycmF5KGMoMTozLCAzOjEpLCBkaW09YygzLDIpKQppbmRleE1hdHJpeAoKeFtpbmRleE1hdHJpeF0KeFtpbmRleE1hdHJpeF0gPC0gMAp4CmBgYAoKIyMgVGhlIGFycmF5KCkgZnVuY3Rpb24KCmBgYHtyfQpaIDwtIGFycmF5KDAsIGMoMyw0KSkKWgpgYGAKCiMjIEZyZXF1ZW5jeSB0YWJsZXMgZnJvbSBmYWN0b3JzCgpgYGB7cn0Kc3RhdGVmciA8LSB0YWJsZShzdGF0ZWYpCnN0YXRlZnIKYGBgCgpUaGlzIGdpdmVzIGluIHN0YXRlZnIgYSB0YWJsZSBvZiBmcmVxdWVuY2llcyBvZiBlYWNoIHN0YXRlIGluIHRoZSBzYW1wbGUuCgpGdXJ0aGVyIHN1cHBvc2UgdGhhdCBpbmNvbWVmIGlzIGEgZmFjdG9yIGdpdmluZyBhIHN1aXRhYmx5IGRlZmluZWQg4oCcaW5jb21lIGNsYXNz4oCdIGZvciBlYWNoIGVudHJ5IGluIHRoZSBkYXRhIHZlY3RvciwgZm9yIGV4YW1wbGUgd2l0aCB0aGUgY3V0KCkgZnVuY3Rpb246IAoKYGBge3J9CmluY29tZWYgPC0gZmFjdG9yKGN1dChpbmNvbWVzLCBicmVha3MgPSAzNSsxMCooMDo3KSkpCmluY29tZWYKYGBgCgpUaGVuIHRvIGNhbGN1bGF0ZSBhIHR3by13YXkgdGFibGUgb2YgZnJlcXVlbmNpZXM6IApgYGB7cn0KdGFibGUoaW5jb21lZixzdGF0ZWYpCmBgYAoKCiMgTGlzdHMgYW5kIGRhdGEgZnJhbWVzCgojIFJlYWRpbmcgZGF0YSBmcm9tIGZpbGVzCgojIFByb2JhYmlsaXR5IGRpc3RyaWJ1dGlvbnMKCiMgR3JvdXBpbmcsIGxvb3BzIGFuZCBjb25kaXRpb25hbCBleGVjdXRpb24KCiMgV3JpdGluZyB5b3VyIG93biBmdW5jdGlvbnMKCiMgU3RhdGlzdGljYWwgbW9kZWxzIGluIFIKCiMgR3JhcGhpY2FsIHByb2NlZHVyZXMKCiMgUGFja2FnZXMKCiMgT1MgZmFjaWxpdGllcwoKCg==</div>
 
 
 
