@@ -194,9 +194,47 @@ Then to calculate a two-way table of frequencies:
 table(incomef,statef)
 ```
 
-
 # Lists and data frames
 
+## Lists
+
+An R list is an object consisting of an ordered collection of objects known as its components.
+
+```{r}
+Lst <- list(name="Fred", wife="Mary", no.children=3,
+              child.ages=c(4,7,9))
+Lst
+```
+```{r}
+length(Lst)
+Lst[[1]]
+Lst[[4]][2]
+Lst$wife
+```
+Additionally, one can also use the names of the list components in double square brackets, i.e., Lst[["name"]] is the same as Lst$name. This is especially useful, when the name of the component to be extracted is stored in another variable as in 
+
+```{r}
+i <- "name"
+Lst[[i]]
+```
+### Concatenating lists
+
+```{r}
+list.J <- list(name="John", age=19)
+list.M <- list(name="Marry", age=18)
+list.T <- c(list.J, list.M)
+list.T
+length(list.T)
+```
+
+## Data frames
+
+### Making data frames
+
+```{r}
+accountants <- data.frame(home=statef, loot=incomes, shot=incomef)
+accountants
+```
 # Reading data from files
 
 # Probability distributions
