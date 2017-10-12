@@ -237,11 +237,81 @@ accountants
 ```
 # Reading data from files
 
-# Probability distributions
+HousePrice <- read.table("houses.data")
+
+HousePrice <- read.table("houses.data", header=TRUE)
+
+## Editing data
+
+xnew <- edit(xold)
+
+or use
+
+xnew <- edit(data.frame())
+
+to enter new data via the spreadsheet interface. 
+
+# TBD Probability distributions !!!!!!!!!!!!!!!!!!!!
 
 # Grouping, loops and conditional execution
 
+if (expr_1) expr_2 else expr_3
+
+for (name in expr_1) expr_2
+
+As an example, suppose ind is a vector of class indicators and we wish to produce separate plots of y versus x within classes. One possibility here is to use _coplot()_, which will produce an array of plots corresponding to each level of the factor. Another way to do this, now putting all plots on the one display, is as follows:
+
+| xc <- split(x, ind)
+| yc <- split(y, ind)
+| for (i in 1:length(yc)) {
+|     plot(xc[[i]], yc[[i]])
+|     abline(lsfit(xc[[i]], yc[[i]]))
+| }
+
+
+repeat expr
+
+while (condition) expr
+
+The break statement can be used to terminate any loop, possibly abnormally. This is the only way to terminate repeat loops.
+
+The next statement can be used to discontinue one particular cycle and skip to the “next”. 
+
+
 # Writing your own functions
+
+| twosam <- function(y1, y2) {
+|     n1  <- length(y1); n2  <- length(y2)
+|     yb1 <- mean(y1);   yb2 <- mean(y2)
+|     s1  <- var(y1);    s2  <- var(y2)
+|     s <- ((n1-1)*s1 + (n2-1)*s2)/(n1+n2-2)
+|     tst <- (yb1 - yb2)/sqrt(s*(1/n1 + 1/n2))
+|     tst
+| }
+
+## Defining new binary operators
+
+| "%!%" <- function(X, y) { … }
+| X %!% y
+
+## Named arguments and defaults
+
+Thus if there is a function fun1 defined by
+
+|  fun1 <- function(data, data.frame, graph, limit) {
+|     [function body omitted]
+|   }
+
+then the function may be invoked in several ways, for example
+
+|  ans <- fun1(d, df, TRUE, 20)
+|  ans <- fun1(d, df, graph=TRUE, limit=20)
+|  ans <- fun1(data=d, limit=20, graph=TRUE, data.frame=df)
+
+In many cases arguments can be given commonly appropriate default values, in which case they may be omitted altogether from the call when the defaults are appropriate. For example, if fun1 were defined as
+
+| fun1 <- function(data, data.frame, graph=TRUE, limit=20) { … }
+
 
 # Statistical models in R
 
@@ -250,5 +320,12 @@ accountants
 # Packages
 
 # OS facilities
+
+# Notes - Continue Here!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+https://www.rdocumentation.org/packages/purrr/versions/0.2.3/topics/map
+
+https://www.tidyverse.org/packages/
+
 
 
