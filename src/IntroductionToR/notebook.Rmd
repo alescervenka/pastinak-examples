@@ -321,11 +321,30 @@ In many cases arguments can be given commonly appropriate default values, in whi
 
 # OS facilities
 
-# Notes - Continue Here!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Tidyverse
 
-https://www.rdocumentation.org/packages/purrr/versions/0.2.3/topics/map
+## Documentation
 
-https://www.tidyverse.org/packages/
+* https://www.rdocumentation.org/packages/purrr/versions/0.2.3/topics/map
+* https://www.tidyverse.org/packages/
+* http://tidyverse.tidyverse.org/
 
+## Installation
+| sudo apt install libcurl4-openssl-dev
+| install.packages("httr")
+| install.packages("rvest")
+| install.packages("tidyverse")
+
+```{r}
+library(tidyverse)
+tidyverse_conflicts()
+```
+
+```{r}
+b <- 1:10 %>% map_dbl(function(x) x + 1)
+b
+c <- 1:10 %>% map_dbl(~ .x + 2)
+c
+```
 
 
