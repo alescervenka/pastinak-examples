@@ -30,6 +30,7 @@ lines ( 0:12, dpois(0:12, 3.1), type="b" )
 
 ```{r}
 data(Titanic)
+library(tidyverse)
 #help(Titanic)
 #summary(Titanic)
 #Titanic
@@ -37,9 +38,36 @@ data(Titanic)
 
 ```{r}
 titanicFrame <- as.data.frame(Titanic)
-smp <- titanicFrame[sample(nrow(titanicFrame), 30, replace=TRUE, prob = titanicFrame$Freq),]T
+smp <- titanicFrame[sample(nrow(titanicFrame), 30, replace=TRUE, prob = titanicFrame$Freq),]
 ```
 
+
+```{r}
+nrow(
+  titanicFrame[sample(nrow(titanicFrame), 30, replace=TRUE, prob = titanicFrame$Freq),] 
+  %>% 
+  filter(Survived == "Yes")
+)
+```
+```{r}
+result <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      titanicFrame[sample(nrow(titanicFrame), 
+                          30, 
+                          replace=TRUE, 
+                          prob = titanicFrame$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+
+```{r}
+hist ( result, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.309), type="b" )
+```
 # The Rest
 
 * Uniform distribution.
