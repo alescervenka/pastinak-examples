@@ -68,6 +68,129 @@ hist ( result, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
 lines ( 0:30, dbinom(0:30, 30, 0.309), type="b" )
 ```
+
+```{r}
+selection <- titanicFrame %>% filter(Sex == "Female")
+female <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      selection[sample(nrow(selection), 
+                          30, 
+                          replace=TRUE, 
+                          prob = selection$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+
+```{r}
+hist ( female, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.715), type="b" )
+```
+
+```{r}
+selection <- titanicFrame %>% filter(Sex == "Male")
+female <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      selection[sample(nrow(selection), 
+                          30, 
+                          replace=TRUE, 
+                          prob = selection$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+
+```{r}
+hist ( female, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.2), type="b" )
+```
+
+```{r}
+selection <- titanicFrame %>% filter(Age == "Child")
+female <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      selection[sample(nrow(selection), 
+                          30, 
+                          replace=TRUE, 
+                          prob = selection$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+
+```{r}
+hist ( female, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.51), type="b" )
+```
+
+```{r}
+selection <- titanicFrame %>% filter(Age == "Adult")
+female <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      selection[sample(nrow(selection), 
+                          30, 
+                          replace=TRUE, 
+                          prob = selection$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+
+```{r}
+hist ( female, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.3), type="b" )
+```
+
+```{r}
+selection <- titanicFrame %>% filter(Class == "Crew")
+female <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      selection[sample(nrow(selection), 
+                          30, 
+                          replace=TRUE, 
+                          prob = selection$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+```{r}
+hist ( female, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.225), type="b" )
+```
+```{r}
+selection <- titanicFrame %>% filter(Class == "1st")
+female <- 1:5000 %>%
+  map_int(function(x)
+    nrow(
+      selection[sample(nrow(selection), 
+                          30, 
+                          replace=TRUE, 
+                          prob = selection$Freq),] 
+      %>% 
+      filter(Survived == "Yes")
+    )
+  )
+```
+```{r}
+hist ( female, xlab="survivors", ylab="", main="",
+prob=T, breaks=seq(0,31,by=1) )
+lines ( 0:30, dbinom(0:30, 30, 0.61), type="b" )
+```
 # The Rest
 
 * Uniform distribution.
