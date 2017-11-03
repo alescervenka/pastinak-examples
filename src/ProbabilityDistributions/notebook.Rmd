@@ -35,6 +35,9 @@ library(tidyverse)
 #summary(Titanic)
 #Titanic
 ```
+```{r}
+mosaicplot(Titanic, main = "Survival on the Titanic")
+```
 
 ```{r}
 titanicFrame <- as.data.frame(Titanic)
@@ -66,7 +69,14 @@ result <- 1:5000 %>%
 ```{r}
 hist ( result, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
-lines ( 0:30, dbinom(0:30, 30, 0.309), type="b" )
+lines ( 0:30, dbinom(0:30, 30, 0.323), type="b" )
+```
+
+```{r}
+totalAll <- (titanicFrame %>% summarise(mean = sum(Freq)))[,c("mean")]
+totalSurv <- (titanicFrame %>% filter(Survived == "Yes") %>% summarise(mean = sum(Freq)))[,c("mean")]
+
+totalSurv / totalAll
 ```
 
 ```{r}
@@ -87,12 +97,19 @@ female <- 1:5000 %>%
 ```{r}
 hist ( female, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
-lines ( 0:30, dbinom(0:30, 30, 0.715), type="b" )
+lines ( 0:30, dbinom(0:30, 30, 0.731), type="b" )
 ```
+```{r}
+womenAll <- (titanicFrame %>% filter(Sex == "Female") %>% summarise(mean = sum(Freq)))[,c("mean")]
+womenSurv <- (titanicFrame %>% filter(Sex == "Female" & Survived == "Yes") %>% summarise(mean = sum(Freq)))[,c("mean")]
+
+womenSurv / womenAll
+```
+
 
 ```{r}
 selection <- titanicFrame %>% filter(Sex == "Male")
-female <- 1:5000 %>%
+male <- 1:5000 %>%
   map_int(function(x)
     nrow(
       selection[sample(nrow(selection), 
@@ -106,14 +123,21 @@ female <- 1:5000 %>%
 ```
 
 ```{r}
-hist ( female, xlab="survivors", ylab="", main="",
+hist ( male, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
-lines ( 0:30, dbinom(0:30, 30, 0.2), type="b" )
+lines ( 0:30, dbinom(0:30, 30, 0.212), type="b" )
+```
+
+```{r}
+menAll <- (titanicFrame %>% filter(Sex == "Male") %>% summarise(mean = sum(Freq)))[,c("mean")]
+menSurv <- (titanicFrame %>% filter(Sex == "Male" & Survived == "Yes") %>% summarise(mean = sum(Freq)))[,c("mean")]
+
+menSurv / menAll
 ```
 
 ```{r}
 selection <- titanicFrame %>% filter(Age == "Child")
-female <- 1:5000 %>%
+child <- 1:5000 %>%
   map_int(function(x)
     nrow(
       selection[sample(nrow(selection), 
@@ -127,14 +151,14 @@ female <- 1:5000 %>%
 ```
 
 ```{r}
-hist ( female, xlab="survivors", ylab="", main="",
+hist ( child, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
 lines ( 0:30, dbinom(0:30, 30, 0.51), type="b" )
 ```
 
 ```{r}
 selection <- titanicFrame %>% filter(Age == "Adult")
-female <- 1:5000 %>%
+adult <- 1:5000 %>%
   map_int(function(x)
     nrow(
       selection[sample(nrow(selection), 
@@ -148,14 +172,14 @@ female <- 1:5000 %>%
 ```
 
 ```{r}
-hist ( female, xlab="survivors", ylab="", main="",
+hist ( adult, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
 lines ( 0:30, dbinom(0:30, 30, 0.3), type="b" )
 ```
 
 ```{r}
 selection <- titanicFrame %>% filter(Class == "Crew")
-female <- 1:5000 %>%
+crew <- 1:5000 %>%
   map_int(function(x)
     nrow(
       selection[sample(nrow(selection), 
@@ -168,13 +192,13 @@ female <- 1:5000 %>%
   )
 ```
 ```{r}
-hist ( female, xlab="survivors", ylab="", main="",
+hist ( crew, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
 lines ( 0:30, dbinom(0:30, 30, 0.225), type="b" )
 ```
 ```{r}
 selection <- titanicFrame %>% filter(Class == "1st")
-female <- 1:5000 %>%
+fstCls <- 1:5000 %>%
   map_int(function(x)
     nrow(
       selection[sample(nrow(selection), 
@@ -187,10 +211,19 @@ female <- 1:5000 %>%
   )
 ```
 ```{r}
-hist ( female, xlab="survivors", ylab="", main="",
+hist ( fstCls, xlab="survivors", ylab="", main="",
 prob=T, breaks=seq(0,31,by=1) )
 lines ( 0:30, dbinom(0:30, 30, 0.61), type="b" )
 ```
+
+```{r}
+combined<-data.frame(dataset=c(rep('Adults',length(adult)),rep('Child',length(child))),value=c(adult,child))
+ggplot(combined,aes(x=value,fill=dataset)) +
+  geom_histogram(aes(y=0.5*..density..),
+                 alpha=0.5,position='identity',binwidth=1)
+```
+
+
 # The Rest
 
 * Uniform distribution.
