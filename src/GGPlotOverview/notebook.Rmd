@@ -1,0 +1,140 @@
+---
+title: "Ggplot2 Overview"
+output: 
+  html_notebook:
+    toc: true
+    toc_depth: 3
+---
+
+# Getting started
+
+## Getting started with ggplot2
+
+In this chapter we’ll mostly use one data set that’s bundled with ggplot2:
+mpg . It includes information about the fuel economy of popular car models in 1999 and 2008, collected by the US Environment Protection Agency.
+
+You can access the data by loading ggplot2
+
+```{r}
+library(ggplot2)
+mpg
+```
+
+Every ggplot2 plot has three key components:
+
+1. __data__,
+2. A set of __aesthetic mappings__ between variables in the data and visual properties, and
+3. At least one layer which describes how to render each observation. Layers
+are usually created with a __geom function__.
+
+Here’s a simple example:
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+    geom_point()
+```
+
+Almost every plot maps a variable to x and y , so naming these aesthetics
+is tedious, and first two unnamed arguments to aes() will be mapped to x
+and y . That means that following code is identical to the example above:
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point()
+```
+
+```{r}
+ggplot(economics, aes(date, unemploy)) + geom_line()
+```
+
+```{r}
+ggplot(mpg, aes(cty)) + geom_histogram()
+```
+
+### Colour, size, shape and other aesthetic attributes
+
+```{r}
+ggplot(mpg, aes(displ, cty, colour = class)) +
+  geom_point()
+```
+
+If you want to set an aesthetic to a fixed value, without scaling it, do so
+in the individual layer outside of aes() . Compare the following two plots:
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
+ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+```
+
+### Faceting
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+geom_point() +
+facet_wrap(~class)
+```
+
+### Plot geoms
+
+You might guess that by substituting geom_point() for a different geom func-
+tion, you’d get a different type of plot:
+
+* __geom_smooth()__ fits a smoother to the data and displays the smooth and its standard error.
+* __geom_boxplot()__ produces a box-and-whisker plot to summarise the distri-
+bution of a set of points.
+* __geom_histogram()__ and __geom_freqpoly()__ show the distribution of continuous
+variables.
+* __geom_bar()__ shows the distribution of categorical variables.
+* __geom_path()__ and geom_line() draw lines between the data points. A line
+plot is constrained to produce lines that travel from left to right, while
+paths can go in any direction.
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+geom_point() +
+geom_smooth()
+```
+
+```{r}
+ggplot(mpg, aes(drv, hwy)) + geom_boxplot()
+ggplot(mpg, aes(drv, hwy)) + geom_violin()
+```
+
+```{r}
+ggplot(mpg, aes(hwy)) +
+geom_freqpoly(binwidth = 2.5)
+ggplot(mpg, aes(hwy)) +
+geom_histogram(binwidth = 2.5)
+```
+
+```{r}
+ggplot(mpg, aes(displ, colour = drv)) +
+geom_freqpoly(binwidth = 0.5)
+```
+
+### Time series with line and path plots
+
+```{r}
+year <- function(x) as.POSIXlt(x)$year + 1900
+ggplot(economics, aes(unemploy / pop, uempmed)) +
+geom_path(colour = "grey50") +
+geom_point(aes(colour = year(date)))
+```
+
+### Modifying the axes
+
+```{r}
+ggplot(mpg, aes(cty, hwy)) +
+geom_point(alpha = 1 / 3) +
+xlab("city driving (mpg)") +
+ylab("highway driving (mpg)")
+# Remove the axis labels with NULL
+ggplot(mpg, aes(cty, hwy)) +
+geom_point(alpha = 1 / 3) +
+xlab(NULL) +
+ylab(NULL)
+```
+
+## Toolbox
+
+
