@@ -1,0 +1,101 @@
+---
+title: "Exponential Distribution"
+output: html_notebook
+---
+
+# Introduction
+
+This entire paragraph was taken over from the Introduction to Statistical Thought (written by Michael Lavine; published on June 24, 2010).
+
+It is often necessary to model a continuous random variable X whose density decreases away from 0. Some examples are
+
+* _Customer service_ time on hold at a help line
+* _Neurobiology_ time until the next neuron fires
+* _Seismology_ time until the next earthquake
+* _Medicine_ remaining years of life for a cancer patient
+* _Ecology_ dispersal distance of a seed
+
+In these examples it is expected that most calls, times or distances will be short and a few will be long. So the density should be large near _x = 0_ and decreasing as _x_ increases.
+
+```{r}
+x <- seq ( 0, 2, length=40 ) # 40 values from 0 to 2
+lam <- c ( 2, 1, .2, .1 ) # 4 different values of lambda
+y <- matrix ( NA, 40, 4 ) # y values for plotting
+for ( i in 1:4 )
+  y[,i] <- dexp ( x, 1/lam[i] ) # exponential pdf
+matplot ( x, y, type="l", xlab="x", ylab="p(x)", col=1 )
+legend ( 1.2, 10, paste ( "lambda =", lam ), lty=1:4, cex=.75 )
+```
+
+# Generating Exponential Observations
+
+The function which generates exponential observation in R is called _rexp_.
+
+```{r}
+draws <- rexp(400, .1)
+mean(draws)
+length(draws)
+```
+# Probability Density
+
+There is a special function in R which calculates the probability density - it is called _dexp_:
+
+```{r}
+dexp(45, .1)
+```
+
+# Cumulative Density
+
+There is a special function in R which calculates the cumulative density - it is called _pexp_:
+
+```{r}
+pexp(45, .1)
+```
+
+# Quantiles
+
+Quantile works as an inverse of the cumulative density function, as illustrated below:
+
+```{r}
+qexp(pexp(45, .1), .1)
+```
+
+Visit [Basic Probability Distributions in R](https://rpubs.com/ggraham412/100906) for more information.
+
+# Quantile-Quantile Plots
+
+As described in the [Q-Q Plot Tutorial](https://intellinexus.wordpress.com/2010/11/29/creating-a-q-q-plot/), The quantile-quantile (q-q) plot is a graphical technique for determining if two data sets come from populations with a common distribution.
+
+The following code compares observations stored in _x.sample_ with those in _y.sample_:
+
+```{r}
+library(tidyverse)
+x.sample <- rexp(400, .1)
+y.sample <- rexp(400, .1)
+qqplot(x.sample, y.sample)
+abline(0,1)
+```
+
+The same test using _ggplot2_:
+
+```{r}
+nq <- 31
+p <- (1 : nq) / nq - 0.5 / nq
+ggplot() + geom_point(aes(x = quantile(x.sample, p), y = quantile(y.sample, p))) +
+  geom_abline(intercept = 0, slope = 1)
+```
+
+Do the following to compare the _x.sample_ with a Exponential distribution Exp(0.1):
+
+```{r}
+xdf <-data.frame(x = x.sample)
+ggplot(xdf, aes(sample = x)) + 
+  stat_qq(distribution = stats::qexp, dparams = list(rate=.1)) + 
+  geom_abline(intercept = 0, slope = 1)
+```
+
+# Further Reading
+
+* [A quantile-quantile plot](http://ggplot2.tidyverse.org/reference/geom_qq.html)
+* [QQ Plots and PP Plots](http://homepage.divms.uiowa.edu/~luke/classes/STAT4580/qqpp.html)
+* [Q-Q Plot Tutorial](https://intellinexus.wordpress.com/2010/11/29/creating-a-q-q-plot/)
