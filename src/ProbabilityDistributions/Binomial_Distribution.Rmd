@@ -75,6 +75,30 @@ length(drawsV1)
 length(drawsV2)
 ```
 
+# Mean, Variance and Standard Deviation
+
+The mean (expected value), variance and standard deviation can be calculated as follows:
+
+```{r}
+dist <- rbinom(3000, 80, 0.6)
+mean(dist) 
+var(dist) # variance
+sqrt(var(dist)) # standard deviation
+```
+
+Roughly 2/3 of the sample falls within about 1 standard deviation of the mean:
+
+```{r}
+sd <- sqrt(var(dist))
+mean((dist >= (mean(dist) - sd)) & (dist <= (mean(dist) + sd)))
+```
+
+Roughly 95% of the sample falls within about 2 standard deviations of the mean:
+
+```{r}
+mean((dist >= (mean(dist) - 2*sd)) & (dist <= (mean(dist) + 2*sd)))
+```
+
 # Probability Density
 
 The probability of observing exactly 5 heads out of 10 flips can be estimated as
