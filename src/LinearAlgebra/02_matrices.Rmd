@@ -1,0 +1,200 @@
+---
+title: "Matrices"
+output: html_notebook
+---
+
+# Creating a matrix
+
+To create a 3×2 matrix that contains in the first column 2, 3, 4 and the second column 5, 6, 7:
+
+```{r}
+A <- matrix(seq(2,7), 3, 2)
+A
+A[3,] # the third row
+A[,2] # the second column
+A[3, 2] # the second column of the third row
+A[-2,] # all rows but the second one
+A[A>2 & A < 7] # all elements of A greater than 2 and smaller than 7
+```
+
+To enter a matrix by the rows instead of the columns, then add the argument _byrow=TRUE_ to the command parameters:
+
+```{r}
+A <-  matrix(seq(2,7), 3, 2, byrow = TRUE)
+A
+```
+
+# Combine rows and columns
+
+```{r}
+u <- 1:6
+v <- 2:7
+cbind(u, v)
+```
+
+```{r}
+rbind(u, v)
+```
+# Dimensions of a matrix
+
+```{r}
+A <- matrix(seq(1:6), 2, 3)
+A
+dim(A) # dimension of a matrix
+length(A) # the number of elements in a matrix
+nrow(A) #  the number of rows in a matrix
+ncol(A) # the number of columns in a matrix
+dimnames(A) # the name of the the dimensions
+```
+
+# Matrix operations
+
+```{r}
+A <- matrix(c(1:5, 11:14), 3, 3)
+B <- matrix(1:9, 3, 3)
+A
+B
+```
+
+## Addition
+
+```{r}
+A + B
+```
+
+## Subtraction
+
+```{r}
+A - B
+```
+
+## Multiplication
+
+```{r}
+A %*% B
+```
+
+## Element-wise multiplication
+
+```{r}
+A * B
+```
+
+## Transposition
+
+```{r}
+t(A)
+```
+
+## Diag
+
+To extract the diagonal of a matrix or create a diagonal matrix from a vector, use the command _diag_:
+
+```{r}
+diag(A)
+```
+
+```{r}
+diag(c(1, 2, 3))
+diag(diag(A))
+```
+
+## Solve
+
+To find the inverse of a matrix or solve a system of equations, use the command _solve_: 
+
+```{r}
+solve(A)
+```
+
+```{r}
+b <- c(2, 3,4)
+solve(A, b)
+```
+
+## Generalized inverse matrix
+
+Not all square matrices have an inverse.  However all square matrices have an infinite number of generalized inverses. 
+A generalized inverse of a square matrix _A_ is a matrix _A-_ satisfying that _A * A- * A = A_. For many practical problems it suffice to find a 
+generalized inverse.
+
+```{r}
+library(MASS)
+ginv(A)
+```
+
+## Crossprod
+
+To create the crossproduct t(A)A in an efficient manner, use the command _crossprod_:
+
+```{r}
+crossprod(A)
+t(A) %*% A
+```
+
+## Sum
+
+```{r}
+sum(A)
+```
+
+## Prod
+
+To multiply the elements of a vector or a matrix, use the command _prod_:
+
+```{r}
+prod(A)
+prod(1:5)
+```
+
+## Cumsum
+
+To create a vector of cumulative sums of the elements of a vector, use the command _cumsum_. If used on a matrix, the matrix is first changed to a vector.
+
+```{r}
+cumsum(A)
+cumsum(1:5)
+```
+
+## Cumprod
+
+To create a vector of cumulative products of the elements of a vector, use the command _cumprod_:
+
+```{r}
+cumprod(A)
+cumprod(1:5)
+```
+
+
+## Min and Max
+
+```{r}
+min(A)
+max(A)
+```
+
+## Det
+
+To calculate the determinant of a square matrix, use the command _det_:
+
+```{r}
+det(A)
+```
+
+# References
+
+* [Examples of Using R with Linear Algebra](http://jekyll.math.byuh.edu/courses/m343/handouts/rlinalg.pdf)
+* [Linear algebra in R](https://www.math.uh.edu/~jmorgan/Math6397/day13/LinearAlgebraR-Handout.pdf)
+* [Matrices and Linear Algebra in R](http://faculty.business.utsa.edu/vdeolive/STA6023/matricesR.pdf)
+* [Introductory linear algebra with R](http://bendixcarstensen.com/APC/linalg-notes-BxC.pdf)
+* [R and Linear Algebra](https://www.r-bloggers.com/r-and-linear-algebra/)
+* [Principal Component Analysis 4 Dummies: Eigenvectors, Eigenvalues and Dimension Reduction](https://georgemdallas.wordpress.com/2013/10/30/principal-component-analysis-4-dummies-eigenvectors-eigenvalues-and-dimension-reduction/)
+* [What are eigenvectors and eigenvalues?](http://www.visiondummy.com/2014/03/eigenvalues-eigenvectors/)
+* [A geometric interpretation of the covariance matrix](http://www.visiondummy.com/2014/04/geometric-interpretation-covariance-matrix/)
+* [Introduction to Principal Component Analysis](https://tgmstat.wordpress.com/2013/11/21/introduction-to-principal-component-analysis-pca/)
+* [Computing and visualizing PCA in R](https://www.r-bloggers.com/computing-and-visualizing-pca-in-r/)
+* [Principal Component Analysis in R](https://www.r-bloggers.com/principal-component-analysis-in-r/)
+* [5 functions to do Principal Components Analysis in R](http://www.gastonsanchez.com/visually-enforced/how-to/2012/06/17/PCA-in-R/)
+* [Practical Guide to Principal Component Analysis in R & Python](https://www.analyticsvidhya.com/blog/2016/03/practical-guide-principal-component-analysis-python/)
+* [Singular-value decomposition](https://en.wikipedia.org/wiki/Singular-value_decomposition)
+
